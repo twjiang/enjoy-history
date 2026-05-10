@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.log
+*.pid
+build_index.py
+convert_books.py
+server-8000.log
+server-8000.pid
+server-8001.log
+server-8001.pid
+server.log
+server.pid
