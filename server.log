@@ -1,0 +1,10 @@
+文獻檢索系統已啓動：http://127.0.0.1:8000
+將優先讀取 data_structured 結構化資料；若缺失或過期會自動由 data 重建。按 Ctrl+C 停止。
+[10/May/2026 15:21:08] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:21:08] "GET /api/chapter?name=%E8%88%8A%E4%BA%94%E4%BB%A3%E5%8F%B2&chapter=0&q=%E5%A4%AA%E7%A5%96 HTTP/1.1" 200 -
+[10/May/2026 15:21:08] "GET /api/chapter?name=%E5%91%A8%E7%A6%AE&chapter=0&q=%E5%A4%A9%E5%AE%98 HTTP/1.1" 200 -
+[10/May/2026 15:23:53] "GET / HTTP/1.1" 200 -
+[10/May/2026 15:23:53] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:23:53] "GET /favicon.svg HTTP/1.1" 200 -
+[10/May/2026 15:23:59] "GET /api/search?q=%E5%AD%A3%E6%AD%A6%E5%AD%90&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:24:10] "GET /api/chapter?name=%E6%98%A5%E7%A7%8B%E5%B7%A6%E5%82%B3&chapter=8&q=%E5%AD%A3%E6%AD%A6%E5%AD%90 HTTP/1.1" 200 -

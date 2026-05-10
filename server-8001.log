@@ -1,0 +1,6 @@
+文獻檢索系統已啓動：http://127.0.0.1:8001
+將優先讀取 data_structured 結構化資料；若缺失或過期會自動由 data 重建。按 Ctrl+C 停止。
+[10/May/2026 15:28:51] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:28:51] "GET /api/chapter?name=%E5%BE%8C%E6%BC%A2%E6%9B%B8&chapter=0&q=%E5%85%89%E6%AD%A6 HTTP/1.1" 200 -
+[10/May/2026 15:33:04] "GET / HTTP/1.1" 304 -
+[10/May/2026 15:33:04] "GET /api/books HTTP/1.1" 200 -

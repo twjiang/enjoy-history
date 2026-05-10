@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enjoy History 文獻檢索</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f1e8;
+      --panel: #fffaf2;
+      --ink: #2d2117;
+      --muted: #7a6b5c;
+      --line: #eadcc9;
+      --accent: #8d3f22;
+      --accent-dark: #6e2d16;
+      --mark: #ffe08a;
+      --shadow: 0 12px 30px rgba(73, 45, 20, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #fff6df 0, var(--bg) 38%, #efe1cf 100%);
+      color: var(--ink);
+      font-family: "Noto Serif CJK TC", "Source Han Serif TC", "Songti TC", "SimSun", serif;
+      line-height: 1.72;
+    }
+
+    header {
+      padding: 44px 20px 26px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 6vw, 58px);
+      letter-spacing: 0.12em;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      margin: 0 auto;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 56px;
+    }
+
+    .search-panel {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 250, 242, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    input[type="search"] {
+      width: 100%;
+      min-height: 54px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffdf8;
+      color: var(--ink);
+      font: inherit;
+      font-size: 18px;
+      outline: none;
+    }
+
+    input[type="search"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(141, 63, 34, 0.12);
+    }
+
+    button {
+      min-height: 48px;
+      border: 0;
+      border-radius: 15px;
+      padding: 0 18px;
+      background: var(--accent);
+      color: #fffaf2;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    button:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    button.secondary { background: #efe2d0; color: var(--ink); }
+    button.secondary:hover { background: #e5d1b9; }
+    button.linklike { min-height: auto; padding: 0; background: transparent; color: var(--accent); text-decoration: underline; }
+
+    .hint {
+      margin: 10px 4px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin: 22px 0 14px;
+    }
+
+    .stats { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .card, .reader, .detail-panel {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 250, 242, 0.96);
+      box-shadow: var(--shadow);
+    }
+
+    .card { padding: 18px; }
+
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    .book-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .count { color: var(--accent); font-weight: 700; }
+
+    .match-list {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .match {
+      padding: 12px 13px;
+      border: 1px solid #f0e0cc;
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    .match-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chapter-chip {
+      border: 1px solid #e5c5a7;
+      border-radius: 999px;
+      padding: 2px 10px;
+      background: #fff4e5;
+      color: var(--accent-dark);
+    }
+
+    mark {
+      border-radius: 4px;
+      padding: 0 2px;
+      background: var(--mark);
+      color: inherit;
+    }
+
+    .empty, .loading {
+      padding: 34px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 22px;
+      background: rgba(255, 250, 242, 0.65);
+    }
+
+    .detail-panel { padding: 20px; }
+
+    .detail-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .reader {
+      margin-top: 18px;
+      padding: 24px;
+    }
+
+    .reader-title {
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 28px;
+    }
+
+    .chapter-content {
+      white-space: pre-wrap;
+      font-size: 19px;
+      line-height: 2.05;
+      overflow-wrap: anywhere;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 680px) {
+      header { padding-top: 30px; }
+      form { grid-template-columns: 1fr; }
+      button { width: 100%; }
+      .search-panel { border-radius: 18px; }
+      .chapter-content { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>文獻檢索</h1>
+    <p class="subtitle">面向十三經與二十四史的本地全文檢索。輸入關鍵詞後，先按書籍聚合展示每本 Top 10，進入書籍可查看全部命中，並可跳轉閱讀關聯章節。</p>
+  </header>
+
+  <main>
+    <section class="search-panel">
+      <form id="searchForm">
+        <input id="queryInput" type="search" placeholder="輸入關鍵詞，如：仁、禮、秦始皇、漢武帝" autocomplete="off" />
+        <button type="submit">檢索</button>
+      </form>
+      <p class="hint">支持繁體/簡體輸入；多個詞用空格分隔時，會查找同時包含所有詞的段落。</p>
+    </section>
+
+    <section class="toolbar">
+      <div id="stats" class="stats">正在載入書目……</div>
+      <div class="actions">
+        <button id="backButton" class="secondary" hidden>返回檢索結果</button>
+      </div>
+    </section>
+
+    <section id="content" class="content"></section>
+    <section id="reader" class="reader" hidden></section>
+  </main>
+
+  <script>
+    const state = {
+      query: "",
+      highlightTerms: [],
+      lastSearch: null,
+      currentBook: null,
+      currentOffset: 0,
+      currentTotal: 0,
+      detailMatches: []
+    };
+
+    const form = document.querySelector("#searchForm");
+    const input = document.querySelector("#queryInput");
+    const stats = document.querySelector("#stats");
+    const content = document.querySelector("#content");
+    const reader = document.querySelector("#reader");
+    const backButton = document.querySelector("#backButton");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeRegExp(value) {
+      return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function highlight(value, terms = state.highlightTerms) {
+      let html = escapeHtml(value || "");
+      const sortedTerms = [...new Set(terms.filter(Boolean))].sort((a, b) => b.length - a.length);
+      if (!sortedTerms.length) return html;
+      const pattern = new RegExp(`(${sortedTerms.map(escapeRegExp).join("|")})`, "gi");
+      return html.replace(pattern, "<mark>$1</mark>");
+    }
+
+    function setLoading(message = "正在檢索，首次載入全文可能需要幾秒……") {
+      content.innerHTML = `<div class="loading">${escapeHtml(message)}</div>`;
+      reader.hidden = true;
+      reader.innerHTML = "";
+    }
+
+    async function fetchJson(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "請求失敗");
+      }
+      return data;
+    }
+
+    function renderMatch(match) {
+      return `
+        <article class="match">
+          <div class="match-meta">
+            <span class="chapter-chip">${escapeHtml(match.chapterTitle)}</span>
+            <span>第 ${match.lineNumber} 行附近</span>
+            <button class="linklike" data-action="open-chapter" data-book="${escapeHtml(match.book)}" data-chapter="${match.chapterIndex}">閱讀本章</button>
+          </div>
+          <div>${highlight(match.snippet)}</div>
+        </article>
+      `;
+    }
+
+    function renderOverview(data) {
+      state.lastSearch = data;
+      state.highlightTerms = data.highlightTerms || [];
+      backButton.hidden = true;
+      reader.hidden = true;
+      reader.innerHTML = "";
+
+      if (!data.books.length) {
+        stats.textContent = `未找到「${data.query}」的匹配結果`;
+        content.innerHTML = `<div class="empty">沒有命中結果。可嘗試更短的詞，或換用繁體/簡體同義寫法。</div>`;
+        return;
+      }
+
+      stats.textContent = `共 ${data.bookCount} 本書命中，合計 ${data.totalMatches} 條匹配。`;
+      content.innerHTML = `
+        <div class="grid">
+          ${data.books.map(book => `
+            <section class="card">
+              <div class="card-header">
+                <div class="book-title">${escapeHtml(book.book)}</div>
+                <div class="count">${book.total} 條</div>
+              </div>
+              <div class="match-list">${book.top.map(renderMatch).join("")}</div>
+              <button data-action="open-book" data-book="${escapeHtml(book.book)}">查看《${escapeHtml(book.book)}》全部 ${book.total} 條</button>
+            </section>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    async function search() {
+      const query = input.value.trim();
+      if (!query) {
+        input.focus();
+        return;
+      }
+      state.query = query;
+      setLoading();
+      try {
+        const data = await fetchJson(`/api/search?q=${encodeURIComponent(query)}&limit=10`);
+        renderOverview(data);
+      } catch (error) {
+        content.innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
+      }
+    }
+
+    async function openBook(book, offset = 0, append = false) {
+      state.currentBook = book;
+      state.currentOffset = offset;
+      if (!append) {
+        setLoading(`正在載入《${book}》的全部匹配……`);
+      }
+
+      const data = await fetchJson(`/api/book?name=${encodeURIComponent(book)}&q=${encodeURIComponent(state.query)}&offset=${offset}&limit=100`);
+      state.highlightTerms = data.highlightTerms || state.highlightTerms;
+      state.currentTotal = data.total;
+      state.detailMatches = append ? state.detailMatches.concat(data.matches) : data.matches;
+      renderBookDetail(data.book);
+    }
+
+    function renderBookDetail(book) {
+      backButton.hidden = false;
+      reader.hidden = true;
+      reader.innerHTML = "";
+      stats.textContent = `《${book}》共 ${state.currentTotal} 條匹配，已顯示 ${state.detailMatches.length} 條。`;
+
+      const hasMore = state.detailMatches.length < state.currentTotal;
+      content.innerHTML = `
+        <section class="detail-panel">
+          <div class="detail-header">
+            <div>
+              <div class="book-title">${escapeHtml(book)}</div>
+              <div class="stats">關鍵詞：${escapeHtml(state.query)}</div>
+            </div>
+            <div class="actions">
+              ${hasMore ? `<button data-action="load-more">載入更多</button>` : ""}
+            </div>
+          </div>
+          <div class="match-list">${state.detailMatches.map(renderMatch).join("")}</div>
+          ${hasMore ? `<button data-action="load-more">載入更多</button>` : `<div class="empty">已顯示本書全部匹配。</div>`}
+        </section>
+      `;
+    }
+
+    async function openChapter(book, chapterIndex) {
+      reader.hidden = false;
+      reader.innerHTML = `<div class="loading">正在載入章節……</div>`;
+      const data = await fetchJson(`/api/chapter?name=${encodeURIComponent(book)}&chapter=${chapterIndex}&q=${encodeURIComponent(state.query)}`);
+      state.highlightTerms = data.highlightTerms || state.highlightTerms;
+      reader.innerHTML = `
+        <h2 class="reader-title">《${escapeHtml(data.book)}》${escapeHtml(data.chapterTitle)}</h2>
+        <div class="chapter-content">${highlight(data.content, data.highlightTerms)}</div>
+      `;
+      reader.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      search();
+    });
+
+    backButton.addEventListener("click", () => {
+      if (state.lastSearch) renderOverview(state.lastSearch);
+    });
+
+    content.addEventListener("click", async event => {
+      const target = event.target.closest("button[data-action]");
+      if (!target) return;
+      const action = target.dataset.action;
+      try {
+        if (action === "open-book") {
+          await openBook(target.dataset.book, 0, false);
+        } else if (action === "open-chapter") {
+          await openChapter(target.dataset.book, Number(target.dataset.chapter));
+        } else if (action === "load-more") {
+          await openBook(state.currentBook, state.detailMatches.length, true);
+        }
+      } catch (error) {
+        content.insertAdjacentHTML("afterbegin", `<div class="empty">${escapeHtml(error.message)}</div>`);
+      }
+    });
+
+    reader.addEventListener("click", async event => {
+      const target = event.target.closest("button[data-action]");
+      if (!target) return;
+    });
+
+    async function init() {
+      try {
+        const data = await fetchJson("/api/books");
+        stats.textContent = `已載入 ${data.bookCount} 本典籍、${data.chapterCount} 個章節、${data.segmentCount} 個檢索段落。`;
+        content.innerHTML = `<div class="empty">請輸入關鍵詞開始檢索。例：仁、禮、楚、秦始皇、制度。</div>`;
+      } catch (error) {
+        stats.textContent = "載入失敗";
+        content.innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

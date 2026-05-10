@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "sourceDir": "data",
+  "bookCount": 37,
+  "chapterCount": 3384,
+  "segmentCount": 401460,
+  "books": [
+    {
+      "title": "三國志",
+      "filename": "三國志.txt",
+      "structuredPath": "data_structured/三國志.json",
+      "chapterCount": 65,
+      "segmentCount": 5601
+    },
+    {
+      "title": "儀禮",
+      "filename": "儀禮.txt",
+      "structuredPath": "data_structured/儀禮.json",
+      "chapterCount": 17,
+      "segmentCount": 4079
+    },
+    {
+      "title": "元史",
+      "filename": "元史.txt",
+      "structuredPath": "data_structured/元史.json",
+      "chapterCount": 212,
+      "segmentCount": 21407
+    },
+    {
+      "title": "北史",
+      "filename": "北史.txt",
+      "structuredPath": "data_structured/北史.json",
+      "chapterCount": 100,
+      "segmentCount": 11240
+    },
+    {
+      "title": "北齊書",
+      "filename": "北齊書.txt",
+      "structuredPath": "data_structured/北齊書.json",
+      "chapterCount": 50,
+      "segmentCount": 1837
+    },
+    {
+      "title": "南史",
+      "filename": "南史.txt",
+      "structuredPath": "data_structured/南史.json",
+      "chapterCount": 76,
+      "segmentCount": 14447
+    },
+    {
+      "title": "南齊書",
+      "filename": "南齊書.txt",
+      "structuredPath": "data_structured/南齊書.json",
+      "chapterCount": 60,
+      "segmentCount": 2893
+    },
+    {
+      "title": "史記",
+      "filename": "史記.txt",
+      "structuredPath": "data_structured/史記.json",
+      "chapterCount": 120,
+      "segmentCount": 5426
+    },
+    {
+      "title": "周易",
+      "filename": "周易.txt",
+      "structuredPath": "data_structured/周易.json",
+      "chapterCount": 69,
+      "segmentCount": 1273
+    },
+    {
+      "title": "周書",
+      "filename": "周書.txt",
+      "structuredPath": "data_structured/周書.json",
+      "chapterCount": 8,
+      "segmentCount": 536
+    },
+    {
+      "title": "周禮",
+      "filename": "周禮.txt",
+      "structuredPath": "data_structured/周禮.json",
+      "chapterCount": 6,
+      "segmentCount": 10915
+    },
+    {
+      "title": "孝經",
+      "filename": "孝經.txt",
+      "structuredPath": "data_structured/孝經.json",
+      "chapterCount": 18,
+      "segmentCount": 23
+    },
+    {
+      "title": "孟子",
+      "filename": "孟子.txt",
+      "structuredPath": "data_structured/孟子.json",
+      "chapterCount": 14,
+      "segmentCount": 707
+    },
+    {
+      "title": "宋史",
+      "filename": "宋史.txt",
+      "structuredPath": "data_structured/宋史.json",
+      "chapterCount": 249,
+      "segmentCount": 54756
+    },
+    {
+      "title": "宋書",
+      "filename": "宋書.txt",
+      "structuredPath": "data_structured/宋書.json",
+      "chapterCount": 100,
+      "segmentCount": 10286
+    },
+    {
+      "title": "尚書",
+      "filename": "尚書.txt",
+      "structuredPath": "data_structured/尚書.json",
+      "chapterCount": 57,
+      "segmentCount": 474
+    },
+    {
+      "title": "後漢書",
+      "filename": "後漢書.txt",
+      "structuredPath": "data_structured/後漢書.json",
+      "chapterCount": 100,
+      "segmentCount": 2741
+    },
+    {
+      "title": "新五代史",
+      "filename": "新五代史.txt",
+      "structuredPath": "data_structured/新五代史.json",
+      "chapterCount": 68,
+      "segmentCount": 1384
+    },
+    {
+      "title": "新唐書",
+      "filename": "新唐書.txt",
+      "structuredPath": "data_structured/新唐書.json",
+      "chapterCount": 249,
+      "segmentCount": 25341
+    },
+    {
+      "title": "明史",
+      "filename": "明史.txt",
+      "structuredPath": "data_structured/明史.json",
+      "chapterCount": 279,
+      "segmentCount": 94296
+    },
+    {
+      "title": "春秋公羊傳",
+      "filename": "春秋公羊傳.txt",
+      "structuredPath": "data_structured/春秋公羊傳.json",
+      "chapterCount": 12,
+      "segmentCount": 2572
+    },
+    {
+      "title": "春秋左傳",
+      "filename": "春秋左傳.txt",
+      "structuredPath": "data_structured/春秋左傳.json",
+      "chapterCount": 12,
+      "segmentCount": 3449
+    },
+    {
+      "title": "春秋穀梁傳",
+      "filename": "春秋穀梁傳.txt",
+      "structuredPath": "data_structured/春秋穀梁傳.json",
+      "chapterCount": 12,
+      "segmentCount": 748
+    },
+    {
+      "title": "晉書",
+      "filename": "晉書.txt",
+      "structuredPath": "data_structured/晉書.json",
+      "chapterCount": 130,
+      "segmentCount": 11251
+    },
+    {
+      "title": "梁書",
+      "filename": "梁書.txt",
+      "structuredPath": "data_structured/梁書.json",
+      "chapterCount": 58,
+      "segmentCount": 2806
+    },
+    {
+      "title": "漢書",
+      "filename": "漢書.txt",
+      "structuredPath": "data_structured/漢書.json",
+      "chapterCount": 120,
+      "segmentCount": 31308
+    },
+    {
+      "title": "爾雅",
+      "filename": "爾雅.txt",
+      "structuredPath": "data_structured/爾雅.json",
+      "chapterCount": 19,
+      "segmentCount": 1605
+    },
+    {
+      "title": "禮記",
+      "filename": "禮記.txt",
+      "structuredPath": "data_structured/禮記.json",
+      "chapterCount": 47,
+      "segmentCount": 1788
+    },
+    {
+      "title": "舊五代史",
+      "filename": "舊五代史.txt",
+      "structuredPath": "data_structured/舊五代史.json",
+      "chapterCount": 124,
+      "segmentCount": 1448
+    },
+    {
+      "title": "舊唐書",
+      "filename": "舊唐書.txt",
+      "structuredPath": "data_structured/舊唐書.json",
+      "chapterCount": 215,
+      "segmentCount": 23719
+    },
+    {
+      "title": "詩經",
+      "filename": "詩經.txt",
+      "structuredPath": "data_structured/詩經.json",
+      "chapterCount": 305,
+      "segmentCount": 1319
+    },
+    {
+      "title": "論語",
+      "filename": "論語.txt",
+      "structuredPath": "data_structured/論語.json",
+      "chapterCount": 20,
+      "segmentCount": 514
+    },
+    {
+      "title": "遼史",
+      "filename": "遼史.txt",
+      "structuredPath": "data_structured/遼史.json",
+      "chapterCount": 70,
+      "segmentCount": 9661
+    },
+    {
+      "title": "金史",
+      "filename": "金史.txt",
+      "structuredPath": "data_structured/金史.json",
+      "chapterCount": 70,
+      "segmentCount": 14921
+    },
+    {
+      "title": "陳書",
+      "filename": "陳書.txt",
+      "structuredPath": "data_structured/陳書.json",
+      "chapterCount": 37,
+      "segmentCount": 1590
+    },
+    {
+      "title": "隋書",
+      "filename": "隋書.txt",
+      "structuredPath": "data_structured/隋書.json",
+      "chapterCount": 86,
+      "segmentCount": 10272
+    },
+    {
+      "title": "魏書",
+      "filename": "魏書.txt",
+      "structuredPath": "data_structured/魏書.json",
+      "chapterCount": 130,
+      "segmentCount": 12827
+    }
+  ]
+}

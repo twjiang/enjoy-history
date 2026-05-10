@@ -1,0 +1,23 @@
+文獻檢索系統已啓動：http://127.0.0.1:8000
+將優先讀取 data_structured 結構化資料；若缺失或過期會自動由 data 重建。按 Ctrl+C 停止。
+[10/May/2026 15:29:03] "GET /api/book?name=%E6%96%B0%E5%94%90%E6%9B%B8&q=%E9%B1%BC%E6%9C%9D%E6%81%A9&offset=0&limit=100 HTTP/1.1" 200 -
+[10/May/2026 15:29:41] "GET /api/search?q=%E6%89%BF%E7%92%80&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:29:58] "GET /api/book?name=%E5%AE%8B%E5%8F%B2&q=%E6%89%BF%E7%92%80&offset=0&limit=100 HTTP/1.1" 200 -
+[10/May/2026 15:30:01] "GET /api/chapter?name=%E5%AE%8B%E5%8F%B2&chapter=171&q=%E6%89%BF%E7%92%80 HTTP/1.1" 200 -
+[10/May/2026 15:30:25] "GET /api/book?name=%E8%88%8A%E5%94%90%E6%9B%B8&q=%E6%89%BF%E7%92%80&offset=0&limit=100 HTTP/1.1" 200 -
+[10/May/2026 15:32:58] "GET / HTTP/1.1" 304 -
+[10/May/2026 15:32:59] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:32:59] "GET /favicon.svg HTTP/1.1" 304 -
+[10/May/2026 15:33:07] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:35:23] "GET / HTTP/1.1" 200 -
+[10/May/2026 15:35:24] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:35:24] "GET /favicon.svg HTTP/1.1" 200 -
+[10/May/2026 15:35:54] "GET / HTTP/1.1" 200 -
+[10/May/2026 15:35:54] "GET /api/books HTTP/1.1" 200 -
+[10/May/2026 15:35:54] "GET /favicon.svg HTTP/1.1" 200 -
+[10/May/2026 15:36:08] "GET /api/search?q=%E6%9C%B1%E6%B8%A9&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:36:37] "GET /api/search?q=%E6%96%B0%E4%BA%94%E4%BB%A3%E5%8F%B2&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:37:07] "GET /api/search?q=%E7%99%BD%E5%B1%85%E6%98%93&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:37:35] "GET /api/search?q=%E8%99%8E%E7%89%A2&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:38:04] "GET /api/search?q=%E6%89%BF%E7%92%80&limit=10 HTTP/1.1" 200 -
+[10/May/2026 15:38:09] "GET /api/book?name=%E8%88%8A%E5%94%90%E6%9B%B8&q=%E6%89%BF%E7%92%80&offset=0&limit=100 HTTP/1.1" 200 -
